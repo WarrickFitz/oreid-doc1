@@ -17,3 +17,5 @@ Runs the proxy and UI using env variables set in .env.prod
 ## Notes
 
 - Requests made to the proxy will log to console. 
+- Sample .env files are in a folder called "oreid-doc1 .env files (warrick)"
+- you DO NEED to have the .env file in the folder along with the other .env.dev and env.prod - even though the .env is only a template the framework checks for it's existance. 
