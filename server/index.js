@@ -6,7 +6,7 @@ var morgan = require('morgan');
 // const { addOreidExpressMiddleware } = require('oreid-js/dist/expressMiddleware');
 
 
-const PORT = 8080 // if you change this port, you should update "proxy" in package.json to match - "proxy" is used by React app during development only
+const PORT = 8081 // if you change this port, you should update "proxy" in package.json to match - "proxy" is used by React app during development only
 dotenv.config();
 const app = express();
 
@@ -28,11 +28,14 @@ function addOreidApiKeysMiddleware(options) {
 }
 
 function onProxyReq(proxyReq, req, res) {
-    proxyReq.setHeader('host', process.env.REACT_APP_OREID_URL); // This is only really used when you're using a debug proxy
+    proxyReq.setHeader('host', process.env.REACT_APP_OREID_HOST); // This is only really used when you're using a debug proxy
 }
 
 const proxyUrl = process.env.REACT_APP_PROXY_URL
-const target = proxyUrl ? proxyUrl : 'https://'+process.env.REACT_APP_OREID_URL
+console.log('proxyUrl: ' + proxyUrl)
+const host = process.env.REACT_APP_OREID_HOST
+console.log('host: ' + host)
+const target = proxyUrl ? proxyUrl : process.env.REACT_APP_OREID_PROTOCOL+'://'+process.env.REACT_APP_OREID_HOST
 
 console.log('target: ' + target)
 

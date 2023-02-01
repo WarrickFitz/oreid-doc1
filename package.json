@@ -2,7 +2,7 @@
   "name": "docs1",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8081",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -14,6 +14,7 @@
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "env-cmd": "^10.1.0",
+    "ethers": "^5.7.2",
     "express": "^4.18.2",
     "express-pino-logger": "^7.0.0",
     "http-proxy-middleware": "^2.0.6",
@@ -21,7 +22,7 @@
     "node-env-run": "^4.0.2",
     "nodemon": "^2.0.20",
     "npm-run-all": "^4.1.5",
-    "oreid-js": "^4.5.0-beta-1",
+    "oreid-js": "^4.5.0",
     "oreid-react": "^1.4.1",
     "oreid-webpopup": "^2.2.1",
     "pino-colada": "^2.2.2",
@@ -33,14 +34,20 @@
   },
   "scripts": {
     "start:dev": "env-cmd -f .env.dev react-scripts start",
+    "start:staging": "env-cmd -f .env.staging react-scripts start",
     "start:prod": "env-cmd -f .env.prod react-scripts start",
+    "start:local": "env-cmd -f .env.local react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server:dev": "env-cmd -f .env.dev node-env-run server --exec nodemon",
+    "server:staging": "env-cmd -f .env.staging node-env-run server --exec nodemon",
     "server:prod": "env-cmd -f .env.prod node-env-run server --exec nodemon",
+    "server:local": "env-cmd -f .env.local node-env-run server --exec nodemon",
     "dev": "run-p server:dev start:dev",
-    "prod": "run-p server:prod start:prod"
+    "staging": "run-p server:staging start:staging",
+    "prod": "run-p server:prod start:prod",
+    "local": "run-p server:local start:local"
   },
   "eslintConfig": {
     "extends": [
